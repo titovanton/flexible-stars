@@ -46,9 +46,10 @@
 
         function drow_stars(target) {
             var settings = target.data('flexible_stars')
-            var fraction = Math.round((settings.init - Math.floor(settings.init))*100)/100
+            // floating point round hack :-3
+            var fraction = Math.round((settings.init - Math.floor(settings.init)) * 100) / 100
 
-            if (settings.init * 1 === 0) {
+            if (settings.init * 1 === 0) { // also from string to digit: js so js... :-3
                 target.find('i').each(function(){
                     clear_star($(this))
 
