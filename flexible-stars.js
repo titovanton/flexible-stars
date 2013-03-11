@@ -7,10 +7,10 @@
                 "gold"    : "sprite-gold-star",
                 "silver"  : "sprite-silver-star",
                 "half"    : "sprite-half-star",
-                "dorate" : "ajax",
-                "url"     : "/stars/handler/",
+                "dorate"  : "ajax",            // or CSS selector for input, like this one: "#rate"
+                "url"     : "/stars/handler/", // used if dorate == "ajax"
                 "init"    : "0",
-                "locked"  : "no"
+                "locked"  : "no"               // or "yes" :-3
             }
 
             // HTML attr init
