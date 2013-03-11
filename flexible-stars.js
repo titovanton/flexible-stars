@@ -4,11 +4,13 @@
         function init(target) {
             // default init
             var settings = {
-                "gold"   : "sprite-gold-star",
-                "silver" : "sprite-silver-star",
-                "half"   : "sprite-half-star",
-                "url"    : "/stars/handler/",
-                "init"   : "0"
+                "gold"    : "sprite-gold-star",
+                "silver"  : "sprite-silver-star",
+                "half"    : "sprite-half-star",
+                "dorate" : "ajax",
+                "url"     : "/stars/handler/",
+                "init"    : "0",
+                "locked"  : "no"
             }
 
             // HTML attr init
@@ -27,6 +29,8 @@
 
             // stor data for future needs
             target.data('flexible_stars', settings)
+
+            return settings
         }
 
         function clear_star(star) {
@@ -110,16 +114,57 @@
             drow_stars($(this).parent())
         }
 
-        return this.each(function() {
-            var target = $(this)
-            init(target)
+        function do_ajax(target) {
+            var settings = target.data('flexible_stars')
 
-            // generate content
-            for (var i = 0; i < 5; i++) target.append('<i/>')
+            $.ajax({
+                url     : settings.url,
+                type    : "POST",
+                dataType: "JSON",
+                data: {
+                    rate: settings.init
+                },
+                success: function(response) {
+                    settings.init = response
+                }
+            })
+        }
+
+        function set_input(target) {
+            var settings = target.data('flexible_stars')
+            $(settings.dorate).val(settings.init)
+        }
+
+        function click_handler(eventObject) {
+            var target = $(this).parent()
+            var settings = target.data('flexible_stars')
+
+            settings.init = $(this).attr('data-rate')
+
+            if (settings.dorate == "ajax") {
+                do_ajax(target)
+                console.log('here')
+                settings.locked = "yes"
+            }
+            else {
+                set_input(target)
+            }
 
             drow_stars(target)
+        }
 
-            target.find('i').hover(mouse_enter_handler, mouse_leave_handler)
+        return this.each(function() {
+            var target   = $(this)
+            var settings = init(target)
+
+            // generate content
+            for (var i = 1; i <= 5; i++) target.append('<i data-rate="' + i + '"/>')
+
+            drow_stars(target)
+            if (settings.locked === "no") {
+                target.find('i').hover(mouse_enter_handler, mouse_leave_handler)
+                target.find('i').click(click_handler)
+            }
         })
 
     }
