@@ -116,15 +116,20 @@
 
         function do_ajax(target) {
             var settings = target.data('flexible_stars')
+            var data     = {rate: settings.init}
+
+            // add to request hidden inputs, such as Django {% csrf_token %}
+            target.find('input').each(function(){
+                data[$(this).attr('name')] = $(this).attr('value')
+            })
 
             $.ajax({
-                url     : settings.url,
-                type    : "POST",
-                dataType: "JSON",
-                data: {
-                    rate: settings.init
-                },
-                success: function(response) {
+                url      : settings.url,
+                type     : "POST",
+                dataType : "JSON",
+                data     : data,
+                async    : false,
+                success  : function(response) {
                     settings.init = response
                 }
             })
@@ -135,6 +140,13 @@
             $(settings.dorate).val(settings.init)
         }
 
+        function clear_events(target) {
+            target.find('i')
+                .unbind('click')
+                .unbind('mouseenter')
+                .unbind('mouseleave')
+        }
+
         function click_handler(eventObject) {
             var target = $(this).parent()
             var settings = target.data('flexible_stars')
@@ -143,8 +155,8 @@
 
             if (settings.dorate == "ajax") {
                 do_ajax(target)
-                console.log('here')
                 settings.locked = "yes"
+                clear_events(target)
             }
             else {
                 set_input(target)
