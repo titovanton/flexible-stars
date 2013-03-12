@@ -5,7 +5,7 @@ object: `$('.myStars').flexibleStars(init)`. Also, all `div.flexible-stars` beco
 
 ## Why?!
 There are so many different 5 stars rate plagin, so what are the benefits of this one? First of all,
-it has pretty nice HTML makrup:
+it has pretty nice HTML layout:
 ```
 <div class="flexible-stars"></div>
 ```
