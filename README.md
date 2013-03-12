@@ -39,8 +39,11 @@ And it works nice and pretty. See Usage for more...
 ## Install
 Follow several steps below: 
 - Clone repo:
+
     `git clone https://github.com/titovanton-com/flexible-stars.git`
+    
 - Add required code to `html>head` tag:
+
 ```
     <script type="text/javascript" src="//some.cdn/jquery.min.js"></script>
     <script type="text/javascript" src="//path/to/flexible-stars/jquery.flexible.stars.js"></script>
