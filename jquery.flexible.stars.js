@@ -206,9 +206,14 @@
 
             draw_stars($stars_wrap)
             if (settings.is_locked === 'no') {
+                if (settings.do_rate === 'ajax') {
+                    $stars_wrap.bind('ajaxSuccess.flexibleStars', ajax_success_handler)
+                }
+                else {
+                    $stars_wrap.bind('inputSuccess.flexibleStars', input_success_handler)
+                }
+                
                 $stars_wrap
-                    .bind('ajaxSuccess.flexibleStars', ajax_success_handler)
-                    .bind('inputSuccess.flexibleStars', input_success_handler)
                     .find('i')
                         .bind('mouseenter.flexibleStars', mouse_enter_handler)
                         .bind('mouseleave.flexibleStars', mouse_leave_handler)
