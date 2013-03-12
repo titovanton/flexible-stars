@@ -156,8 +156,10 @@
         }
 
         function clear_events($stars_wrap) {
-            $stars_wrap.find('i')
+            $stars_wrap
                 .unbind('.flexibleStars')
+                .find('i')
+                    .unbind('.flexibleStars')
         }
 
         function click_handler(eventObject) {
