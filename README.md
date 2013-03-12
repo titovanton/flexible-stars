@@ -3,8 +3,7 @@ jQuery plugin makes easy to install 5 stars rate to your web page with custom CS
 All settings gets from HTML `data-` attributes, or you can init plugin as usiall, by pass init
 object: `$('.myStars').flexibleStars(init)`. Also, all `div.flexible-stars` becomes 5 flexibleStars automaticly.
 
-## Live Expamle:
-[website](http://www.titovanton.com/flexible-stars/example)
+[Live Expamle link](http://www.titovanton.com/flexible-stars/example)
 
 ## Why?!
 There are so many different 5 stars rate plagin, so what are the benefits of this one? First of all,
