@@ -1,33 +1,33 @@
 (function($){
-    $.fn.flexibleStars = function (js_init) {
+    $.fn.flexibleStars = function (jsInit) {
 
         function init($global) {
             // default init
             var settings = {
-                gold       : 'sprite-gold-star',
-                silver     : 'sprite-silver-star',
-                half       : 'sprite-half-star',
-                do_rate    : 'ajax',            // or CSS selector for input, like this one: '#rate'
-                url        : '/stars/handler/', // used if do_rate == 'ajax'
-                init       : '0',
-                is_locked  : 'no',              // or 'yes' :-3
-                ajax_lock  : 'yes',             // used if do_rate == 'ajax' and lock stars after ajax success
-                input_lock : 'no'               // used if do_rate is CSS selector and lock stars after input has inited
+                gold      : 'sprite-gold-star',
+                silver    : 'sprite-silver-star',
+                half      : 'sprite-half-star',
+                doRate    : 'ajax',            // or CSS selector for input, like this one: '#rate'
+                url       : '/stars/handler/', // used if doRate == 'ajax'
+                init      : '0',
+                isLocked  : 'no',              // or 'yes' :-3
+                ajaxLock  : 'yes',             // used if doRate == 'ajax' and lock stars after ajax success
+                inputLock : 'no'               // used if doRate is CSS selector and lock stars after input has inited
             }
 
             // HTML attr init
-            var for_template = []
-            for(var k in settings) for_template.push(k)
+            var forTemplate = []
+            for(var k in settings) forTemplate.push(k)
 
-            for (var i = 0; i < for_template.length; i++) {
-                var tag = 'data-' + for_template[i]
+            for (var i = 0; i < forTemplate.length; i++) {
+                var tag = 'data-' + forTemplate[i]
                 if (typeof($global.attr(tag)) != 'undefined') {
-                    settings[for_template[i]] = $global.attr(tag)
+                    settings[forTemplate[i]] = $global.attr(tag)
                 }
             }
 
             // init from js
-            $.extend(settings, js_init)
+            $.extend(settings, jsInit)
 
             // stor data for future needs
             $global.data('flexibleStars', settings)
@@ -35,7 +35,7 @@
             return settings
         }
 
-        function clear_star($star) {
+        function clearStar($star) {
             var settings = $star.parent().data('flexibleStars')
 
             $star
@@ -46,14 +46,14 @@
             return $star
         }
 
-        function draw_stars($stars_wrap) {
-            var settings = $stars_wrap.data('flexibleStars'),
+        function drawStars($starsWrap) {
+            var settings = $starsWrap.data('flexibleStars'),
                 // floating point round hack :-3
                 fraction = Math.round((settings.init - Math.floor(settings.init)) * 100) / 100
 
             if (settings.init * 1 === 0) {
-                $stars_wrap.find('i').each(function(){
-                    clear_star($(this))
+                $starsWrap.find('i').each(function(){
+                    clearStar($(this))
 
                     $(this).addClass(settings.silver)
                 })
@@ -61,8 +61,8 @@
             else if (fraction >= 0.25 && fraction <= 0.74) {
                 var i = 0
 
-                $stars_wrap.find('i').each(function(){
-                    clear_star($(this))
+                $starsWrap.find('i').each(function(){
+                    clearStar($(this))
 
                     if (i < Math.floor(settings.init)) $(this).addClass(settings.gold)
                     else if (i == Math.floor(settings.init)) $(this).addClass(settings.half)
@@ -73,8 +73,8 @@
             else if (fraction < 0.25 && fraction >= 0){
                 var i = 0
 
-                $stars_wrap.find('i').each(function(){
-                    clear_star($(this))
+                $starsWrap.find('i').each(function(){
+                    clearStar($(this))
 
                     if (i < Math.floor(settings.init)) $(this).addClass(settings.gold)
                     else $(this).addClass(settings.silver)
@@ -84,8 +84,8 @@
             else if (fraction < 1 && fraction > 0.74){
                 var i = 0
 
-                $stars_wrap.find('i').each(function(){
-                    clear_star($(this))
+                $starsWrap.find('i').each(function(){
+                    clearStar($(this))
 
                     if (i < Math.ceil(settings.init)) $(this).addClass(settings.gold)
                     else $(this).addClass(settings.silver)
@@ -94,31 +94,31 @@
             }
         }
 
-        function mouse_enter_handler(eventObject) {
-            var _this       = this,
-                $stars_wrap = $(this).parent(),
-                settings    = $stars_wrap.data('flexibleStars'),
-                set_class   = settings.gold
+        function mouseEnterHandler(eventObject) {
+            var _this      = this,
+                $starsWrap = $(this).parent(),
+                settings   = $starsWrap.data('flexibleStars'),
+                setClass   = settings.gold
 
-            $stars_wrap.find('i').each(function(){
-                clear_star($(this)).addClass(set_class)
+            $starsWrap.find('i').each(function(){
+                clearStar($(this)).addClass(setClass)
 
                 if (this == _this) {
-                    set_class = settings.silver
+                    setClass = settings.silver
                 }
             })
         }
 
-        function mouse_leave_handler(eventObject) {
-            draw_stars($(this).parent())
+        function mouseLeaveHandler(eventObject) {
+            drawStars($(this).parent())
         }
 
-        function do_ajax($stars_wrap, rate) {
-            var settings = $stars_wrap.data('flexibleStars'),
+        function doAjax($starsWrap, rate) {
+            var settings = $starsWrap.data('flexibleStars'),
                 data     = {rate: rate}
 
             // add to request hidden inputs, such as Django {% csrf_token %}
-            $stars_wrap.find('input').each(function(){
+            $starsWrap.find('input').each(function(){
                 data[$(this).attr('name')] = $(this).attr('value')
             })
 
@@ -131,93 +131,93 @@
                 success  : function(response) {
                     var rate = response.rate
                     if (typeof(parseInt(rate)) == 'number' && rate > 0 && rate <= 5) {
-                        $stars_wrap.trigger('ajaxSuccess.flexibleStars', response)
+                        $starsWrap.trigger('ajaxSuccess.flexibleStars', response)
                     }
                     else {
-                        $stars_wrap.trigger('ajaxResponseError.flexibleStars', response)
+                        $starsWrap.trigger('ajaxResponseError.flexibleStars', response)
                     }
                 },
                 error: function() {
-                    $stars_wrap.trigger('ajaxServerError.flexibleStars', rate)
+                    $starsWrap.trigger('ajaxServerError.flexibleStars', rate)
                 }
             })
         }
 
-        function set_input($stars_wrap, rate) {
-            var settings = $stars_wrap.data('flexibleStars')
+        function setInput($starsWrap, rate) {
+            var settings = $starsWrap.data('flexibleStars')
 
-            if ($(settings.do_rate).size()) {
-                $(settings.do_rate).val(rate)
-                $stars_wrap.trigger('inputSuccess.flexibleStars', rate)
+            if ($(settings.doRate).size()) {
+                $(settings.doRate).val(rate)
+                $starsWrap.trigger('inputSuccess.flexibleStars', rate)
             }
             else {
-                $stars_wrap.trigger('inputError.flexibleStars')
+                $starsWrap.trigger('inputError.flexibleStars')
             }
         }
 
-        function clear_events($stars_wrap) {
-            $stars_wrap
+        function clearEvents($starsWrap) {
+            $starsWrap
                 .unbind('.flexibleStars')
                 .find('i')
                     .unbind('.flexibleStars')
         }
 
-        function click_handler(eventObject) {
-            var $stars_wrap = $(this).parent(),
-                settings    = $stars_wrap.data('flexibleStars'),
-                rate        = $(this).attr('data-rate')
+        function clickHandler(eventObject) {
+            var $starsWrap = $(this).parent(),
+                settings   = $starsWrap.data('flexibleStars'),
+                rate       = $(this).attr('data-rate')
 
-            if (settings.do_rate == 'ajax') do_ajax($stars_wrap, rate)
-            else set_input($stars_wrap, rate)
+            if (settings.doRate == 'ajax') doAjax($starsWrap, rate)
+            else setInput($starsWrap, rate)
         }
 
-        function ajax_success_handler (eventObject, response) {
-            var $stars_wrap = $(this)
-                settings = $stars_wrap.data('flexibleStars')
+        function ajaxSuccessHandler (eventObject, response) {
+            var $starsWrap = $(this)
+                settings   = $starsWrap.data('flexibleStars')
 
             settings.init = response.rate
-            draw_stars($stars_wrap)
+            drawStars($starsWrap)
 
-            if (settings.ajax_lock === 'yes') {
-                settings.is_locked = 'yes'
-                clear_events($stars_wrap)
+            if (settings.ajaxLock === 'yes') {
+                settings.isLocked = 'yes'
+                clearEvents($starsWrap)
             }
         }
 
-        function input_success_handler (eventObject, rate) {
-            var $stars_wrap = $(this)
-                settings    = $stars_wrap.data('flexibleStars')
+        function inputSuccessHandler (eventObject, rate) {
+            var $starsWrap = $(this)
+                settings   = $starsWrap.data('flexibleStars')
 
             settings.init = rate
-            draw_stars($stars_wrap)
+            drawStars($starsWrap)
 
-            if (settings.input_lock === 'yes') {
-                settings.is_locked = 'yes'
-                clear_events($stars_wrap)
+            if (settings.inputLock === 'yes') {
+                settings.isLocked = 'yes'
+                clearEvents($starsWrap)
             }
         }
 
         return this.each(function() {
-            var $stars_wrap = $(this),
-                settings    = init($stars_wrap)
+            var $starsWrap = $(this),
+                settings   = init($starsWrap)
 
             // generate content
-            for (var i = 1; i <= 5; i++) $stars_wrap.append('<i data-rate="' + i + '"/>')
+            for (var i = 1; i <= 5; i++) $starsWrap.append('<i data-rate="' + i + '"/>')
 
-            draw_stars($stars_wrap)
-            if (settings.is_locked === 'no') {
-                if (settings.do_rate === 'ajax') {
-                    $stars_wrap.bind('ajaxSuccess.flexibleStars', ajax_success_handler)
+            drawStars($starsWrap)
+            if (settings.isLocked === 'no') {
+                if (settings.doRate === 'ajax') {
+                    $starsWrap.bind('ajaxSuccess.flexibleStars', ajaxSuccessHandler)
                 }
                 else {
-                    $stars_wrap.bind('inputSuccess.flexibleStars', input_success_handler)
+                    $starsWrap.bind('inputSuccess.flexibleStars', inputSuccessHandler)
                 }
                 
-                $stars_wrap
+                $starsWrap
                     .find('i')
-                        .bind('mouseenter.flexibleStars', mouse_enter_handler)
-                        .bind('mouseleave.flexibleStars', mouse_leave_handler)
-                        .bind('click.flexibleStars', click_handler)
+                        .bind('mouseenter.flexibleStars', mouseEnterHandler)
+                        .bind('mouseleave.flexibleStars', mouseLeaveHandler)
+                        .bind('click.flexibleStars', clickHandler)
             }
         })
 
