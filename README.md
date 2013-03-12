@@ -50,5 +50,7 @@ Follow several steps below:
 <style type="text/css" media="all"> .flexible-stars > i {display: inline-block} </style>
 ```
 
+Well done, you got it!
+
 ## Usage
 ...
