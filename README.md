@@ -39,7 +39,7 @@ Follow several steps below:
 - `git clone https://github.com/titovanton-com/flexible-stars.git`
 - `<script type="text/javascript" src="//some.cdn/jquery.min.js"></script>`
 - `<script type="text/javascript" src="//path/to/flexible-stars/jquery.flexible.stars.js"></script>`
-- `<style type="text/css" media="screen"> .flexible-stars > i {display: inline-block} </style>`
+- `<style type="text/css" media="all"> .flexible-stars > i {display: inline-block} </style>`
 
 ## Usage
 ...
