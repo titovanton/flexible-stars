@@ -1,5 +1,5 @@
 # Flexible stars
-jQuery plugin makes easy to install 5 stars rate to your web page with custom CSS styles.
+jQuery plugin makes easy to install 5 stars rate widget to your web page with custom CSS styles.
 All settings gets from HTML `data-` attributes, or you can init plugin as usiall, by pass init
 object: `$('.myStars').flexibleStars(init)`. Also, all `div.flexible-stars` becomes 5 flexibleStars automaticly.
 
@@ -65,6 +65,7 @@ Well done, you got it!
 - **inputLock** | *defaul: 'no'*                 | description: locking after input set value handler, 'yes' or 'no'
 
 ## Usage via data attributes
+[Live example @ www.titovanton.com](http://www.titovanton.com/flexible-stars/example)
 4 of 5 locked gold stars:
 ```
 <div class="flexible-stars"
