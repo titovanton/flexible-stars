@@ -126,3 +126,4 @@ $('.any-class-you-want').flexibleStars({
 
 ## License
 Download, install and use it where ever you want with my blessing =)
+PS: do not forget to give me a star!
