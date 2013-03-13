@@ -102,5 +102,5 @@ $('.flexible-stars').bind('ajaxSuccess.flexibleStars', function(eventObject, res
 ></div>
 <input id="rate" type="text" name="rate">
 ```
-After initing, plugin will not lock widget as ti set in `inputLock` by default.
+After initing, plugin will not lock widget as it set in `inputLock` by default.
 This option would be usefull with HTML forms.
