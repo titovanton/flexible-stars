@@ -64,6 +64,13 @@ Well done, you got it!
 - **ajaxLock**  | *defaul: 'yes'*                | description: locking after ajax success handler, 'yes' or 'no'
 - **inputLock** | *defaul: 'no'*                 | description: locking after input set value handler, 'yes' or 'no'
 
+## Events
+- **ajaxSuccess.flexibleStars** - trigger if Ajax handler (server side) return JSON object with `init: <int>`.
+- **ajaxResponseError.flexibleStars** - trigger if Ajax handler (server side) return JSON object with some error.
+- **ajaxServerError.flexibleStars** - trigger if wrong data-url set, for example.
+- **inputSuccess.flexibleStars** - trigger if input value set by CSS/jQuery selector was successfull.
+- **inputError.flexibleStars** - trigger if input value initing was not successfull, or selector error.
+
 ## Usage via data attributes
 [Live example @ www.titovanton.com](http://www.titovanton.com/flexible-stars/example)
 
