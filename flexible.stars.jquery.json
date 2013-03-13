@@ -1,10 +1,10 @@
 {
-    "name": "flexiblestars",
+    "name": "flexible.stars",
     "title": "Flexible Stars",
     "description": "jQuery plugin makes easy to install 5 stars rate widget to your web page with custom CSS styles. All settings gets from HTML data- attributes, or you can init plugin as usual, by pass init object: $('.myStars').flexibleStars(init). Also, all div.flexible-stars becomes 5 flexibleStars automaticly.",
     "keywords": [
         "rate",
-        "five stars",
+        "five",
         "stars",
         "vote"
     ],
