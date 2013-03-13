@@ -66,6 +66,7 @@ Well done, you got it!
 
 ## Usage via data attributes
 [Live example @ www.titovanton.com](http://www.titovanton.com/flexible-stars/example)
+
 4 of 5 locked gold stars:
 ```
 <div class="flexible-stars"
