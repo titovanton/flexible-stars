@@ -125,6 +125,6 @@ $('.any-class-you-want').flexibleStars({
 ```
 
 ## License
-Apache License, Version 2.0
-Download, install and use it where ever you want with my blessing =)
-PS: do not forget to give me a star!
+- Apache License, Version 2.0
+- Download, install and use it where ever you want with my blessing =)
+- PS: do not forget to give me a star!
