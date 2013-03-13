@@ -54,13 +54,12 @@ Follow several steps below:
 Well done, you got it!
 
 ## Usage
-- **name**    | **default**          | **description**
-- *gold*      | 'sprite-gold-star'   | CSS class of `<i/>` with gold star view
-- *silver*    | 'sprite-silver-star' | CSS class of `<i/>` with silver star view
-- *half*      | 'sprite-half-star'   | CSS class of `<i/>` with half star view
-- *doRate*    | 'ajax'               | action on click event, you can set CSS selector
-- *url*       | '/stars/handler/'    | used if doRate == 'ajax'
-- *init*      | '0'                  | valid values: 0 - 5
-- *isLocked*  | 'no'                 | locking after initing, 'yes' or 'no'
-- *ajaxLock*  | 'yes'                | locking after ajax success handler, 'yes' or 'no'
-- *inputLock* | 'no'                 | locking after input set value handler, 'yes' or 'no'
+- **gold**      | *defaul*: 'sprite-gold-star'   | *description*: CSS class of `<i/>` with gold star view
+- **silver**    | *defaul*: 'sprite-silver-star' | *description*: CSS class of `<i/>` with silver star view
+- **half**      | *defaul*: 'sprite-half-star'   | *description*: CSS class of `<i/>` with half star view
+- **doRate**    | *defaul*: 'ajax'               | *description*: action on click event, you can set CSS selector
+- **url**       | *defaul*: '/stars/handler/'    | *description*: used if doRate == 'ajax'
+- **init**      | *defaul*: '0'                  | *description*: valid values: 0 - 5
+- **isLocked**  | *defaul*: 'no'                 | *description*: locking after initing, 'yes' or 'no'
+- **ajaxLock**  | *defaul*: 'yes'                | *description*: locking after ajax success handler, 'yes' or 'no'
+- **inputLock** | *defaul*: 'no'                 | *description*: locking after input set value handler, 'yes' or 'no'
