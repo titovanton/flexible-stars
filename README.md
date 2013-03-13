@@ -113,3 +113,16 @@ $('.flexible-stars').bind('ajaxSuccess.flexibleStars', function(eventObject, res
 ```
 After initing, plugin will not lock widget as it set in `inputLock` by default.
 This option would be usefull with **HTML forms**.
+
+## Usage via JavaScript
+I'll show you only one example, becouse usage via JavaScript is similar of usage via data attributes:
+
+```
+$('.any-class-you-want').flexibleStars({
+    init: 0,
+    doRate: '#rate'
+})
+```
+
+## License
+Download, install and use it where ever you want with my blessing =)
