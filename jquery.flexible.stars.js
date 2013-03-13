@@ -129,8 +129,8 @@
                 data     : data,
                 async    : false,
                 success  : function(response) {
-                    var rate = response.rate
-                    if (typeof(parseInt(rate)) == 'number' && rate > 0 && rate <= 5) {
+                    var init = response.init
+                    if (typeof(parseInt(init)) == 'number' && init > 0 && init <= 5) {
                         $starsWrap.trigger('ajaxSuccess.flexibleStars', response)
                     }
                     else {
@@ -175,7 +175,7 @@
             var $starsWrap = $(this)
                 settings   = $starsWrap.data('flexibleStars')
 
-            settings.init = response.rate
+            settings.init = response.init
             drawStars($starsWrap)
 
             if (settings.ajaxLock === 'yes') {
