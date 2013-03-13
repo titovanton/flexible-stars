@@ -38,6 +38,7 @@ And it works nice and pretty. See Usage for more...
 
 ## Install
 Follow several steps below: 
+
 - Clone repo:
 
 `git clone https://github.com/titovanton-com/flexible-stars.git`
@@ -53,4 +54,13 @@ Follow several steps below:
 Well done, you got it!
 
 ## Usage
-...
+- **name**    | **default**          | **description**
+- *gold*      | 'sprite-gold-star'   | CSS class of `<i/>` with gold star view
+- *silver*    | 'sprite-silver-star' | CSS class of `<i/>` with silver star view
+- *half*      | 'sprite-half-star'   | CSS class of `<i/>` with half star view
+- *doRate*    | 'ajax'               | action on click event, you can set CSS selector
+- *url*       | '/stars/handler/'    | used if doRate == 'ajax'
+- *init*      | '0'                  | valid values: 0 - 5
+- *isLocked*  | 'no'                 | locking after initing, 'yes' or 'no'
+- *ajaxLock*  | 'yes'                | locking after ajax success handler, 'yes' or 'no'
+- *inputLock* | 'no'                 | locking after input set value handler, 'yes' or 'no'
