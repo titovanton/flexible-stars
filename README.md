@@ -86,7 +86,7 @@ as it set in `ajaxLock` parametr by default.
 </div>
 ```
 Also, you can return any other JSON paramets: `{init: 5, count: 1591}` and then 
-bind `ajaxSuccess.flexibleStars` event to handle that:
+**bind** `ajaxSuccess.flexibleStars` **event** to handle that:
 ```
 // some js file
 $('.flexible-stars').bind('ajaxSuccess.flexibleStars', function(eventObject, response) {
@@ -103,4 +103,4 @@ $('.flexible-stars').bind('ajaxSuccess.flexibleStars', function(eventObject, res
 <input id="rate" type="text" name="rate">
 ```
 After initing, plugin will not lock widget as it set in `inputLock` by default.
-This option would be usefull with HTML forms.
+This option would be usefull with **HTML forms**.
