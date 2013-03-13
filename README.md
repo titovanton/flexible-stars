@@ -14,7 +14,7 @@ it has pretty nice HTML layout:
 becomes
 ```
 <div class="flexible-stars">
-    <!-- i - because it's icon! Like in Twitter Bootstrap :-3  -->
+    <!- i - because it's icon! Like in Twitter Bootstrap :-3  -->
     <i class="sprite-silver-star" data-rate="1"></i>
     <i class="sprite-silver-star" data-rate="2"></i>
     <i class="sprite-silver-star" data-rate="3"></i>
@@ -31,7 +31,7 @@ You can set icon class name, init, lock widget and set Ajax handler from HTML:
     data-half="sprite-teaser-half-star"
     data-url="/flexible-stars/example/handler/"
     data-init="4"
-    data-isLocked="yes"
+    data-isLocked="no"
 ></div>
 ```
 And it works nice and pretty. See Usage for more...
@@ -53,13 +53,54 @@ Follow several steps below:
 
 Well done, you got it!
 
-## Usage
-- **gold**      | *defaul*: 'sprite-gold-star'   | *description*: CSS class of `<i/>` with gold star view
-- **silver**    | *defaul*: 'sprite-silver-star' | *description*: CSS class of `<i/>` with silver star view
-- **half**      | *defaul*: 'sprite-half-star'   | *description*: CSS class of `<i/>` with half star view
-- **doRate**    | *defaul*: 'ajax'               | *description*: action on click event, you can set CSS selector
-- **url**       | *defaul*: '/stars/handler/'    | *description*: used if doRate == 'ajax'
-- **init**      | *defaul*: '0'                  | *description*: valid values: 0 - 5
-- **isLocked**  | *defaul*: 'no'                 | *description*: locking after initing, 'yes' or 'no'
-- **ajaxLock**  | *defaul*: 'yes'                | *description*: locking after ajax success handler, 'yes' or 'no'
-- **inputLock** | *defaul*: 'no'                 | *description*: locking after input set value handler, 'yes' or 'no'
+## Options
+- **gold**      | *defaul: 'sprite-gold-star'*   | description: CSS class of `<i/>` with gold star view
+- **silver**    | *defaul: 'sprite-silver-star'* | description: CSS class of `<i/>` with silver star view
+- **half**      | *defaul: 'sprite-half-star'*   | description: CSS class of `<i/>` with half star view
+- **doRate**    | *defaul: 'ajax'*               | description: action on click event, you can set CSS selector
+- **url**       | *defaul: '/stars/handler/'*    | description: used if doRate == 'ajax'
+- **init**      | *defaul: '0'*                  | description: valid values: 0 - 5
+- **isLocked**  | *defaul: 'no'*                 | description: locking after initing, 'yes' or 'no'
+- **ajaxLock**  | *defaul: 'yes'*                | description: locking after ajax success handler, 'yes' or 'no'
+- **inputLock** | *defaul: 'no'*                 | description: locking after input set value handler, 'yes' or 'no'
+
+## Usage via data attributes
+4 of 5 locked gold stars:
+```
+<div class="flexible-stars"
+    data-init="4"
+    data-isLocked="yes"
+></div>
+```
+3 of 5 locked gold stars. When user set rate, after that plugin send AJAX POST request with parametr `rate`.
+Also, script will attach to the request any inputs, that you put inside `div.flexible-stars`. Ajax handler
+mast return JSON `{init: <int>}`, to init `div.flexible-stars` by AJAX success and lock it, as it set in
+`ajaxLock` parametr by default. 
+```
+<div class="flexible-stars"
+    data-init="3"
+    data-url="/flexible-stars/example/handler/"
+>
+<input type="hidden" name="asdffdsa" value="8ek840k">
+{% csrf_token %} <!- or any other Framework/CMS tokens -->
+</div>
+```
+Also, you can return any other JSON paramets: `{init: 5, count: 1591}` and then 
+bind `ajaxSuccess.flexibleStars` event to handle that:
+```
+// some js file
+$('.flexible-stars').bind('ajaxSuccess.flexibleStars', function(eventObject, response) {
+    // your code here
+    // response.init == 5, response.count == 1591
+})
+```
+0 of 5 non locked gold stars, with `input#rate` initing handler:
+```
+<div class="flexible-stars"
+    data-init="0"
+    data-doRate="#rate"
+></div>
+<input id="rate" type="text" name="rate">
+```
+After initing, plugin will not lock widget as ti set in `inputLock` by default.
+This option would be usefull with HTML forms.
