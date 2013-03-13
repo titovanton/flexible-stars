@@ -1,0 +1,36 @@
+{
+    "name": "flexiblestars",
+    "title": "Flexible Stars",
+    "description": "jQuery plugin makes easy to install 5 stars rate widget to your web page with custom CSS styles. All settings gets from HTML data- attributes, or you can init plugin as usual, by pass init object: $('.myStars').flexibleStars(init). Also, all div.flexible-stars becomes 5 flexibleStars automaticly.",
+    "keywords": [
+        "rate",
+        "five stars",
+        "stars",
+        "vote"
+    ],
+    "version": "1.0",
+    "author": {
+        "name": "Titov Anton",
+        "url": "http://www.titovanton.com",
+        "email": "mail@titovanton.com"
+    },
+    "maintainers": [
+        {
+            "name": "Titov Anton",
+            "url": "http://www.titovanton.com",
+            "email": "mail@titovanton.com"
+        }
+    ],
+    "licenses": [
+        {
+            "type": "Apache License, Version 2.0",
+            "url": "http://opensource.org/licenses/Apache-2.0"
+        }
+    ],
+    "homepage": "http://www.titovanton.com",
+    "demo": "http://www.titovanton.com/flexible-stars/example",
+    "docs": "https://github.com/titovanton-com/flexible-stars",
+    "dependencies": {
+        "jquery": ">=1.8"
+    }
+}

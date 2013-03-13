@@ -1,6 +1,6 @@
 # Flexible stars
 jQuery plugin makes easy to install 5 stars rate widget to your web page with custom CSS styles.
-All settings gets from HTML `data-` attributes, or you can init plugin as usiall, by pass init
+All settings gets from HTML `data-` attributes, or you can init plugin as usual, by pass init
 object: `$('.myStars').flexibleStars(init)`. Also, all `div.flexible-stars` becomes 5 flexibleStars automaticly.
 
 [Live example @ www.titovanton.com](http://www.titovanton.com/flexible-stars/example)
@@ -14,7 +14,7 @@ it has pretty nice HTML layout:
 becomes
 ```
 <div class="flexible-stars">
-    <!- i - because it's icon! Like in Twitter Bootstrap :-3  -->
+    <!-- i - because it's icon! Like in Twitter Bootstrap :-3  -->
     <i class="sprite-silver-star" data-rate="1"></i>
     <i class="sprite-silver-star" data-rate="2"></i>
     <i class="sprite-silver-star" data-rate="3"></i>
@@ -91,7 +91,7 @@ as it set in `ajaxLock` parametr by default.
     data-url="/flexible-stars/example/handler/"
 >
 <input type="hidden" name="asdffdsa" value="8ek840k">
-{% csrf_token %} <!- or any other Framework/CMS tokens -->
+{% csrf_token %} <!-- or any other Framework/CMS tokens -->
 </div>
 ```
 Also, you can return any other JSON paramets: `{init: 5, count: 1591}` and then 
