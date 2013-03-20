@@ -83,7 +83,7 @@ Well done, you got it!
 ```
 3 of 5 locked gold stars. When user set rate, after that plugin send AJAX POST request with parametr `rate`.
 Also, script will attach to the request any inputs, that you put inside `div.flexible-stars`. **CSRF token** for
-expample. Ajax handler mast return JSON `{init: <int>}`, to init `div.flexible-stars` by AJAX success and lock it, 
+expample. Ajax handler must return JSON `{init: <int>}`, to init `div.flexible-stars` by AJAX success and lock it, 
 as it set in `ajaxLock` parametr by default. 
 ```
 <div class="flexible-stars"
