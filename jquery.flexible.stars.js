@@ -17,12 +17,12 @@
 
             // HTML attr init
             var forTemplate = []
-            for(var k in settings) forTemplate.push(k)
+            for (var k in settings) forTemplate.push(k)
 
             for (var i = 0; i < forTemplate.length; i++) {
-                var tag = 'data-' + forTemplate[i]
-                if (typeof($global.attr(tag)) != 'undefined') {
-                    settings[forTemplate[i]] = $global.attr(tag)
+                var attr = 'data-' + forTemplate[i]
+                if (typeof($global.attr(attr)) != 'undefined') {
+                    settings[forTemplate[i]] = $global.attr(attr)
                 }
             }
 
