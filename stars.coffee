@@ -174,7 +174,7 @@
                 settings.isLocked = 'yes'
                 clearEvents $starsWrap
 
-        return @.each () ->
+        @.each () ->
             $starsWrap = $ @
             settings = init $starsWrap
             # generate content
