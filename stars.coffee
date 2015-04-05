@@ -15,7 +15,6 @@
                 inputLock: 'no'               # used if doRate is CSS selector and lock stars after input has inited
 
             # HTML attr init
-            forTemplate = []
             for key of settings
                 attr = "data-#{key}"
                 if typeof($global.attr attr) != 'undefined'
